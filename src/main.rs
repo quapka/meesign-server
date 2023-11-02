@@ -27,6 +27,7 @@ mod proto {
                 meesign_crypto::proto::ProtocolType::Gg18 => ProtocolType::Gg18,
                 meesign_crypto::proto::ProtocolType::Elgamal => ProtocolType::Elgamal,
                 meesign_crypto::proto::ProtocolType::Frost => ProtocolType::Frost,
+                meesign_crypto::proto::ProtocolType::Ptsrsap1 => ProtocolType::Ptsrsap1,
             }
         }
     }
@@ -37,6 +38,7 @@ mod proto {
                 ProtocolType::Gg18 => meesign_crypto::proto::ProtocolType::Gg18,
                 ProtocolType::Elgamal => meesign_crypto::proto::ProtocolType::Elgamal,
                 ProtocolType::Frost => meesign_crypto::proto::ProtocolType::Frost,
+                ProtocolType::Ptsrsap1 => meesign_crypto::proto::ProtocolType::Ptsrsap1,
             }
         }
     }

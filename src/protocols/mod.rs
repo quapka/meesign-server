@@ -4,13 +4,15 @@ use crate::proto::ProtocolType;
 pub mod elgamal;
 pub mod frost;
 pub mod gg18;
+pub mod ptsrsap1;
 
 impl ProtocolType {
     pub fn check_threshold(self, threshold: u32, group_size: u32) -> bool {
         match self {
-            ProtocolType::Gg18 | ProtocolType::Elgamal | ProtocolType::Frost => {
-                threshold >= 2 && threshold <= group_size
-            }
+            ProtocolType::Gg18
+            | ProtocolType::Elgamal
+            | ProtocolType::Frost
+            | ProtocolType::Ptsrsap1 => threshold >= 2 && threshold <= group_size,
         }
     }
 }

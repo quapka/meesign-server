@@ -5,6 +5,8 @@ use crate::group::Group;
 use crate::proto::{ProtocolType, SignRequest, TaskType};
 use crate::protocols::frost::FROSTSign;
 use crate::protocols::gg18::GG18Sign;
+use crate::protocols::ptsrsap1::PTSRSAP1Sign;
+
 use crate::protocols::Protocol;
 use crate::tasks::{Task, TaskResult, TaskStatus};
 use log::{info, warn};
@@ -48,6 +50,7 @@ impl SignTask {
             protocol: match protocol_type {
                 ProtocolType::Gg18 => Box::new(GG18Sign::new()),
                 ProtocolType::Frost => Box::new(FROSTSign::new()),
+                ProtocolType::Ptsrsap1 => Box::new(PTSRSAP1Sign::new()),
                 _ => {
                     warn!("Protocol type {:?} does not support signing", protocol_type);
                     return Err("Unsupported protocol type for signing".into());

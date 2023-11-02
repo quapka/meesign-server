@@ -18,7 +18,9 @@ tempfile = "3.3.0"
 lazy_static = "1.4.0"
 openssl = "0.10.57"
 sha2 = "0.10.6"
-meesign-crypto = { git = "https://github.com/crocs-muni/meesign-crypto", rev = "6a6fbf7", default-features = false }
+# FIXME Do not point to quapka's for (this is because of syncing the deployment of PTSRSAP1.
+#       Point to the upstream from crocs-muni.
+meesign-crypto = { git = "https://github.com/quapka/meesign-crypto", rev = "cb4b31e", features = [ "ptsrsap1", "frost", "elgamal" ], default-features = false }
 
 [build-dependencies]
 tonic-build = "0.10"

@@ -6,6 +6,7 @@ use crate::proto::{KeyType, ProtocolType, TaskType};
 use crate::protocols::elgamal::ElgamalGroup;
 use crate::protocols::frost::FROSTGroup;
 use crate::protocols::gg18::GG18Group;
+use crate::protocols::ptsrsap1::PTSRSAP1Group;
 use crate::protocols::Protocol;
 use crate::tasks::{Task, TaskResult, TaskStatus};
 use log::{info, warn};
@@ -46,6 +47,12 @@ impl GroupTask {
             }
             (ProtocolType::Frost, KeyType::SignChallenge) => {
                 Box::new(FROSTGroup::new(devices_len, threshold))
+            }
+            (ProtocolType::Ptsrsap1, KeyType::SignPdf) => {
+                Box::new(PTSRSAP1Group::new(devices_len, threshold))
+            }
+            (ProtocolType::Ptsrsap1, KeyType::SignChallenge) => {
+                Box::new(PTSRSAP1Group::new(devices_len, threshold))
             }
             (ProtocolType::Elgamal, KeyType::Decrypt) => {
                 Box::new(ElgamalGroup::new(devices_len, threshold))
