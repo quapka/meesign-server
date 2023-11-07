@@ -20,7 +20,7 @@ openssl = "0.10.57"
 sha2 = "0.10.6"
 # FIXME Do not point to quapka's for (this is because of syncing the deployment of PTSRSAP1.
 #       Point to the upstream from crocs-muni.
-meesign-crypto = { git = "https://github.com/quapka/meesign-crypto", rev = "cb4b31e", features = [ "ptsrsap1", "frost", "elgamal" ], default-features = false }
+meesign-crypto = { git = "https://github.com/quapka/meesign-crypto", branch = "add-ptsrsap1", features = [ "ptsrsap1", "frost", "elgamal" ], default-features = false }
 
 [build-dependencies]
 tonic-build = "0.10"
