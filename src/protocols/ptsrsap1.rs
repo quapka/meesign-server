@@ -27,7 +27,7 @@ impl Protocol for PTSRSAP1Group {
         communicator.send_all(|idx| {
             (ProtocolGroupInit {
                 protocol_type: ProtocolType::Ptsrsap1 as i32,
-                index: idx + 1,
+                index: idx,
                 parties,
                 threshold,
             })
@@ -80,13 +80,13 @@ impl Protocol for PTSRSAP1Sign {
         let participant_indices: Vec<_> = communicator
             .get_protocol_indices()
             .into_iter()
-            .map(|idx| idx + 1)
+            .map(|idx| idx)
             .collect();
         communicator.send_all(|idx| {
             (ProtocolInit {
                 protocol_type: ProtocolType::Ptsrsap1 as i32,
                 indices: participant_indices.clone(),
-                index: idx + 1,
+                index: idx,
                 data: Vec::from(data),
             })
             .encode_to_vec()
