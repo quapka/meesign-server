@@ -22,6 +22,7 @@
             openssl
             pkg-config
             fd
+            jdk17
             rust-bin.beta.latest.default
           ] ++ (with pkgs; [
             protobuf
