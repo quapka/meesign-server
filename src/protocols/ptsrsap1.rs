@@ -113,7 +113,7 @@ impl Protocol for PTSRSAP1Sign {
     }
 
     fn last_round(&self) -> u16 {
-        3
+        2
     }
 
     fn get_type(&self) -> ProtocolType {
