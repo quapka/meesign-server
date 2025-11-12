@@ -3,7 +3,7 @@ name: Nix build
 on: [push, pull_request]
 
 jobs:
-  standalone:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
