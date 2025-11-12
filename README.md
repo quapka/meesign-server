@@ -118,6 +118,34 @@ Otherwise, you can start a Postgres database in a Docker cotainer.
    cargo run
    ```
 
+### Develop and build via Nix
+
+It is possible to build MeeSign server via [Nix](https://nixos.org/) Flakes
+(though it is not available in the nixpkgs). To enter a development environment
+use:
+
+```bash
+nix develop
+cargo build
+```
+
+You can also build or run directly the `meesign-server` binary. Note, however,
+that the binary does not handle the Postgres database instance. Thus, you need
+to handle the steps 5. and 6. from above and the following is only an
+alternative to the step 7. Or, you can only use the CLI interface of the
+`meesign-server` (as shown in the example below). To build and run separately:
+
+```bash
+nix build
+./result/bin/meesign-server --help
+```
+
+To build and run in a single step:
+
+```
+nix run .# -- --help
+```
+
 ### Development and tests
 
 There are three layers of tests available. Standard Rust unit tests, database
