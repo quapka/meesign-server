@@ -1,0 +1,24 @@
+name: Nix build
+
+on: [push, pull_request]
+
+jobs:
+  standalone:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    name: 
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@v13
+        with:
+          diagnostic-endpoint: ""
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v7
+        with:
+          diagnostic-endpoint: ""
+
+      - name: Build via Nix Flakes
+        run: nix build
