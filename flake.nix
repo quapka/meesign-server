@@ -24,6 +24,7 @@
         buildDependencies = with pkgs; [
           openssl
         ];
+        meesign-server = pkgs.callPackage ./default.nix { };
       in
       with pkgs;
       {
@@ -31,21 +32,9 @@
           buildInputs = buildDependencies ++ nativeDependencies;
         };
 
-        packages.default = pkgs.rustPlatform.buildRustPackage rec {
-          pname = "meesign-server";
-          version = (builtins.fromTOML (builtins.readFile ./Cargo.toml)).package.version;
-          src = ./.;
-          cargoBuildFlags = "--package ${pname}";
-
-          cargoLock = {
-            lockFile = ./Cargo.lock;
-            outputHashes = {
-              "meesign-crypto-0.5.0" = "sha256-/ugNNNBnZTC58tTsXMbvwalMQh9sGgDkIFjUD+72T1A=";
-            };
-          };
-
-          nativeBuildInputs = nativeDependencies;
-          buildInputs = buildDependencies;
+        packages = {
+          inherit meesign-server;
+          default = meesign-server;
         };
       }
     );
